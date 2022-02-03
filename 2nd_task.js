@@ -54,14 +54,42 @@ let buckets = [[a,0.5],[b,0.3],[c,0.2]]
 function pick_arr(cust_id,buckets) {
 
     let rand = Math.random();
-    let prob = 0;
+    let eff = 0;
 
     for (let i = 0; i < buckets.length; i++) {
-        prob += buckets[i][1];
+        eff += buckets[i][1];
 
-        if (prob > rand) {
+        if (eff > rand) {
             buckets[i][0].push(cust_id);
-            return;
+            break;
         }
     }
 }
+
+// let cust_id_arr = [231,689,823,457,925,712,567,568,926,431]
+let cust_id_arr = [6,5,8,9]
+
+for(let i=0;i<cust_id_arr.length;i++){
+  pick_arr(cust_id_arr[i],buckets)
+}
+
+console.log(a)
+console.log(b)
+console.log(c)
+
+/*
+1st iteration
+[ 6, 8, 9 ]
+[ 5 ]
+[]
+
+2nd iteration
+[ 5, 9 ]
+[ 6 ]
+[ 8 ]
+
+3rd iteration
+[ 9 ]
+[ 6, 5 ]
+[ 8 ]
+*/
